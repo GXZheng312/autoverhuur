@@ -248,7 +248,7 @@
   <xs:element name="autoverhuurDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="autoverhuurDataSet" msprop:Generator_UserDSName="autoverhuurDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="auto" msprop:Generator_TableClassName="autoDataTable" msprop:Generator_TableVarName="tableauto" msprop:Generator_TablePropName="auto" msprop:Generator_RowDeletingName="autoRowDeleting" msprop:Generator_RowChangingName="autoRowChanging" msprop:Generator_RowEvHandlerName="autoRowChangeEventHandler" msprop:Generator_RowDeletedName="autoRowDeleted" msprop:Generator_UserTableName="auto" msprop:Generator_RowChangedName="autoRowChanged" msprop:Generator_RowEvArgName="autoRowChangeEvent" msprop:Generator_RowClassName="autoRow">
+        <xs:element name="auto" msprop:Generator_TableClassName="autoDataTable" msprop:Generator_TableVarName="tableauto" msprop:Generator_RowChangedName="autoRowChanged" msprop:Generator_TablePropName="auto" msprop:Generator_RowDeletingName="autoRowDeleting" msprop:Generator_RowChangingName="autoRowChanging" msprop:Generator_RowEvHandlerName="autoRowChangeEventHandler" msprop:Generator_RowDeletedName="autoRowDeleted" msprop:Generator_RowClassName="autoRow" msprop:Generator_UserTableName="auto" msprop:Generator_RowEvArgName="autoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="autokenteken" msprop:Generator_ColumnVarNameInTable="columnautokenteken" msprop:Generator_ColumnPropNameInRow="autokenteken" msprop:Generator_ColumnPropNameInTable="autokentekenColumn" msprop:Generator_UserColumnName="autokenteken">
@@ -275,7 +275,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="factuur" msprop:Generator_TableClassName="factuurDataTable" msprop:Generator_TableVarName="tablefactuur" msprop:Generator_TablePropName="factuur" msprop:Generator_RowDeletingName="factuurRowDeleting" msprop:Generator_RowChangingName="factuurRowChanging" msprop:Generator_RowEvHandlerName="factuurRowChangeEventHandler" msprop:Generator_RowDeletedName="factuurRowDeleted" msprop:Generator_UserTableName="factuur" msprop:Generator_RowChangedName="factuurRowChanged" msprop:Generator_RowEvArgName="factuurRowChangeEvent" msprop:Generator_RowClassName="factuurRow">
+        <xs:element name="factuur" msprop:Generator_TableClassName="factuurDataTable" msprop:Generator_TableVarName="tablefactuur" msprop:Generator_RowChangedName="factuurRowChanged" msprop:Generator_TablePropName="factuur" msprop:Generator_RowDeletingName="factuurRowDeleting" msprop:Generator_RowChangingName="factuurRowChanging" msprop:Generator_RowEvHandlerName="factuurRowChangeEventHandler" msprop:Generator_RowDeletedName="factuurRowDeleted" msprop:Generator_RowClassName="factuurRow" msprop:Generator_UserTableName="factuur" msprop:Generator_RowEvArgName="factuurRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="factuurnummer" msprop:Generator_ColumnVarNameInTable="columnfactuurnummer" msprop:Generator_ColumnPropNameInRow="factuurnummer" msprop:Generator_ColumnPropNameInTable="factuurnummerColumn" msprop:Generator_UserColumnName="factuurnummer" type="xs:int" />
@@ -284,7 +284,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="klant" msprop:Generator_TableClassName="klantDataTable" msprop:Generator_TableVarName="tableklant" msprop:Generator_TablePropName="klant" msprop:Generator_RowDeletingName="klantRowDeleting" msprop:Generator_RowChangingName="klantRowChanging" msprop:Generator_RowEvHandlerName="klantRowChangeEventHandler" msprop:Generator_RowDeletedName="klantRowDeleted" msprop:Generator_UserTableName="klant" msprop:Generator_RowChangedName="klantRowChanged" msprop:Generator_RowEvArgName="klantRowChangeEvent" msprop:Generator_RowClassName="klantRow">
+        <xs:element name="klant" msprop:Generator_TableClassName="klantDataTable" msprop:Generator_TableVarName="tableklant" msprop:Generator_RowChangedName="klantRowChanged" msprop:Generator_TablePropName="klant" msprop:Generator_RowDeletingName="klantRowDeleting" msprop:Generator_RowChangingName="klantRowChanging" msprop:Generator_RowEvHandlerName="klantRowChangeEventHandler" msprop:Generator_RowDeletedName="klantRowDeleted" msprop:Generator_RowClassName="klantRow" msprop:Generator_UserTableName="klant" msprop:Generator_RowEvArgName="klantRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="klantID" msprop:Generator_ColumnVarNameInTable="columnklantID" msprop:Generator_ColumnPropNameInRow="klantID" msprop:Generator_ColumnPropNameInTable="klantIDColumn" msprop:Generator_UserColumnName="klantID" type="xs:int" />
@@ -320,7 +320,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="reservering" msprop:Generator_TableClassName="reserveringDataTable" msprop:Generator_TableVarName="tablereservering" msprop:Generator_TablePropName="reservering" msprop:Generator_RowDeletingName="reserveringRowDeleting" msprop:Generator_RowChangingName="reserveringRowChanging" msprop:Generator_RowEvHandlerName="reserveringRowChangeEventHandler" msprop:Generator_RowDeletedName="reserveringRowDeleted" msprop:Generator_UserTableName="reservering" msprop:Generator_RowChangedName="reserveringRowChanged" msprop:Generator_RowEvArgName="reserveringRowChangeEvent" msprop:Generator_RowClassName="reserveringRow">
+        <xs:element name="reservering" msprop:Generator_TableClassName="reserveringDataTable" msprop:Generator_TableVarName="tablereservering" msprop:Generator_RowChangedName="reserveringRowChanged" msprop:Generator_TablePropName="reservering" msprop:Generator_RowDeletingName="reserveringRowDeleting" msprop:Generator_RowChangingName="reserveringRowChanging" msprop:Generator_RowEvHandlerName="reserveringRowChangeEventHandler" msprop:Generator_RowDeletedName="reserveringRowDeleted" msprop:Generator_RowClassName="reserveringRow" msprop:Generator_UserTableName="reservering" msprop:Generator_RowEvArgName="reserveringRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="factuurnummer" msprop:Generator_ColumnVarNameInTable="columnfactuurnummer" msprop:Generator_ColumnPropNameInRow="factuurnummer" msprop:Generator_ColumnPropNameInTable="factuurnummerColumn" msprop:Generator_UserColumnName="factuurnummer" type="xs:int" />
@@ -357,4 +357,11 @@
       <xs:field xpath="mstns:autokenteken" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="klant_factuur" msdata:parent="klant" msdata:child="factuur" msdata:parentkey="klantID" msdata:childkey="klantID" msprop:Generator_UserChildTable="factuur" msprop:Generator_ChildPropName="GetfactuurRows" msprop:Generator_UserRelationName="klant_factuur" msprop:Generator_RelationVarName="relationklant_factuur" msprop:Generator_UserParentTable="klant" msprop:Generator_ParentPropName="klantRow" />
+      <msdata:Relationship name="factuur_reservering" msdata:parent="factuur" msdata:child="reservering" msdata:parentkey="factuurnummer" msdata:childkey="factuurnummer" msprop:Generator_UserChildTable="reservering" msprop:Generator_ChildPropName="GetreserveringRows" msprop:Generator_UserRelationName="factuur_reservering" msprop:Generator_ParentPropName="factuurRow" msprop:Generator_RelationVarName="relationfactuur_reservering" msprop:Generator_UserParentTable="factuur" />
+      <msdata:Relationship name="auto_reservering" msdata:parent="auto" msdata:child="reservering" msdata:parentkey="autokenteken" msdata:childkey="autokenteken" msprop:Generator_UserChildTable="reservering" msprop:Generator_ChildPropName="GetreserveringRows" msprop:Generator_UserRelationName="auto_reservering" msprop:Generator_ParentPropName="autoRow" msprop:Generator_RelationVarName="relationauto_reservering" msprop:Generator_UserParentTable="auto" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

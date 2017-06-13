@@ -32,6 +32,12 @@ namespace autoverhuur {
         
         private reserveringDataTable tablereservering;
         
+        private global::System.Data.DataRelation relationklant_factuur;
+        
+        private global::System.Data.DataRelation relationfactuur_reservering;
+        
+        private global::System.Data.DataRelation relationauto_reservering;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -266,6 +272,9 @@ namespace autoverhuur {
                     this.tablereservering.InitVars();
                 }
             }
+            this.relationklant_factuur = this.Relations["klant_factuur"];
+            this.relationfactuur_reservering = this.Relations["factuur_reservering"];
+            this.relationauto_reservering = this.Relations["auto_reservering"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -284,6 +293,18 @@ namespace autoverhuur {
             base.Tables.Add(this.tableklant);
             this.tablereservering = new reserveringDataTable();
             base.Tables.Add(this.tablereservering);
+            this.relationklant_factuur = new global::System.Data.DataRelation("klant_factuur", new global::System.Data.DataColumn[] {
+                        this.tableklant.klantIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablefactuur.klantIDColumn}, false);
+            this.Relations.Add(this.relationklant_factuur);
+            this.relationfactuur_reservering = new global::System.Data.DataRelation("factuur_reservering", new global::System.Data.DataColumn[] {
+                        this.tablefactuur.factuurnummerColumn}, new global::System.Data.DataColumn[] {
+                        this.tablereservering.factuurnummerColumn}, false);
+            this.Relations.Add(this.relationfactuur_reservering);
+            this.relationauto_reservering = new global::System.Data.DataRelation("auto_reservering", new global::System.Data.DataColumn[] {
+                        this.tableauto.autokentekenColumn}, new global::System.Data.DataColumn[] {
+                        this.tablereservering.autokentekenColumn}, false);
+            this.Relations.Add(this.relationauto_reservering);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -773,12 +794,15 @@ namespace autoverhuur {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public factuurRow AddfactuurRow(int factuurnummer, int klantID, System.DateTime factuurDatum) {
+            public factuurRow AddfactuurRow(int factuurnummer, klantRow parentklantRowByklant_factuur, System.DateTime factuurDatum) {
                 factuurRow rowfactuurRow = ((factuurRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         factuurnummer,
-                        klantID,
+                        null,
                         factuurDatum};
+                if ((parentklantRowByklant_factuur != null)) {
+                    columnValuesArray[1] = parentklantRowByklant_factuur[0];
+                }
                 rowfactuurRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowfactuurRow);
                 return rowfactuurRow;
@@ -1418,14 +1442,20 @@ namespace autoverhuur {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public reserveringRow AddreserveringRow(int factuurnummer, string autokenteken, System.DateTime datumVan, System.DateTime datumTot, int autokosten) {
+            public reserveringRow AddreserveringRow(factuurRow parentfactuurRowByfactuur_reservering, autoRow parentautoRowByauto_reservering, System.DateTime datumVan, System.DateTime datumTot, int autokosten) {
                 reserveringRow rowreserveringRow = ((reserveringRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        factuurnummer,
-                        autokenteken,
+                        null,
+                        null,
                         datumVan,
                         datumTot,
                         autokosten};
+                if ((parentfactuurRowByfactuur_reservering != null)) {
+                    columnValuesArray[0] = parentfactuurRowByfactuur_reservering[0];
+                }
+                if ((parentautoRowByauto_reservering != null)) {
+                    columnValuesArray[1] = parentautoRowByauto_reservering[0];
+                }
                 rowreserveringRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowreserveringRow);
                 return rowreserveringRow;
@@ -1691,6 +1721,17 @@ namespace autoverhuur {
             public void SetautonaamNull() {
                 this[this.tableauto.autonaamColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public reserveringRow[] GetreserveringRows() {
+                if ((this.Table.ChildRelations["auto_reservering"] == null)) {
+                    return new reserveringRow[0];
+                }
+                else {
+                    return ((reserveringRow[])(base.GetChildRows(this.Table.ChildRelations["auto_reservering"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1737,6 +1778,28 @@ namespace autoverhuur {
                 }
                 set {
                     this[this.tablefactuur.factuurDatumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public klantRow klantRow {
+                get {
+                    return ((klantRow)(this.GetParentRow(this.Table.ParentRelations["klant_factuur"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["klant_factuur"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public reserveringRow[] GetreserveringRows() {
+                if ((this.Table.ChildRelations["factuur_reservering"] == null)) {
+                    return new reserveringRow[0];
+                }
+                else {
+                    return ((reserveringRow[])(base.GetChildRows(this.Table.ChildRelations["factuur_reservering"])));
                 }
             }
         }
@@ -1820,6 +1883,17 @@ namespace autoverhuur {
                     this[this.tableklant.huisnummerColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public factuurRow[] GetfactuurRows() {
+                if ((this.Table.ChildRelations["klant_factuur"] == null)) {
+                    return new factuurRow[0];
+                }
+                else {
+                    return ((factuurRow[])(base.GetChildRows(this.Table.ChildRelations["klant_factuur"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1888,6 +1962,28 @@ namespace autoverhuur {
                 }
                 set {
                     this[this.tablereservering.autokostenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public factuurRow factuurRow {
+                get {
+                    return ((factuurRow)(this.GetParentRow(this.Table.ParentRelations["factuur_reservering"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["factuur_reservering"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public autoRow autoRow {
+                get {
+                    return ((autoRow)(this.GetParentRow(this.Table.ParentRelations["auto_reservering"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["auto_reservering"]);
                 }
             }
         }
@@ -4123,6 +4219,15 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(autoverhuurDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._klantTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._klantTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._autoTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.auto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -4138,15 +4243,6 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._factuurTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._klantTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._klantTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4169,6 +4265,14 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(autoverhuurDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._klantTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._klantTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._autoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.auto.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -4182,14 +4286,6 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._factuurTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._klantTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._klantTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4219,14 +4315,6 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._klantTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._klantTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._factuurTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.factuur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -4240,6 +4328,14 @@ namespace autoverhuur.autoverhuurDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._autoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._klantTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.klant.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._klantTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

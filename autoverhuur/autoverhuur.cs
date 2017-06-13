@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace autoverhuur
 {
-    public partial class Form1 : Form
+    public partial class autoverhuurForm : Form
     {
-        public Form1()
+        public autoverhuurForm()
         {
             InitializeComponent();
+            dataGridView1.DataSource = autoverhuurDataSet.klant;
+ 
         }
     }
 }
