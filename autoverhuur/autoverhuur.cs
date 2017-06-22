@@ -18,7 +18,7 @@ namespace autoverhuur
             InitializeComponent();
             database db = new database();
 
-            dataGridView1.DataSource = db.createTable("SELECT * FROM auto");
+            dataGridView2.DataSource = db.createTable("SELECT * FROM auto");
         }
     }
 }
