@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace autoverhuur
 {
@@ -15,8 +16,9 @@ namespace autoverhuur
         public autoverhuurForm()
         {
             InitializeComponent();
-            dataGridView1.DataSource = autoverhuurDataSet.klant;
- 
+            database db = new database();
+
+            dataGridView1.DataSource = db.createTable("SELECT * FROM auto");
         }
     }
 }

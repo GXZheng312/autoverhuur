@@ -51,11 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="autoverhuurDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>autoverhuurDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="database.cs" />
     <Compile Include="autoverhuur.cs">
       <SubType>Form</SubType>
@@ -77,17 +72,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="autoverhuurDataSet.xsc">
-      <DependentUpon>autoverhuurDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="autoverhuurDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>autoverhuurDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="autoverhuurDataSet.xss">
-      <DependentUpon>autoverhuurDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
