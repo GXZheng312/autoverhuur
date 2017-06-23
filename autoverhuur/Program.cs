@@ -16,7 +16,8 @@ namespace autoverhuur
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new autoverhuurForm());
+            // Application.Run(new autoverhuurForm());
+            Application.Run(new main_menu());
         }
     }
 }
