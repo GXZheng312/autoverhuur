@@ -15,6 +15,15 @@ namespace autoverhuur
         public klanteen_overzicht()
         {
             InitializeComponent();
+            database db = new database();
+            dataGridView1.DataSource = db.createTable("SELECT * FROM klant");
+
+        }
+
+        private void klantToevoegenBtn_Click(object sender, EventArgs e)
+        {
+            klant_toevoegen form = new klant_toevoegen();
+            form.ShowDialog();
         }
     }
 }

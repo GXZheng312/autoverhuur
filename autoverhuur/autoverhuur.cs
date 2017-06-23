@@ -20,5 +20,11 @@ namespace autoverhuur
 
             dataGridView2.DataSource = db.createTable("SELECT * FROM auto");
         }
+
+        private void autoToevoegenBtn_Click(object sender, EventArgs e)
+        {
+            auto_toevoegen form = new auto_toevoegen();
+            form.Show();
+        }
     }
 }

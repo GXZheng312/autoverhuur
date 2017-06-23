@@ -15,13 +15,14 @@ namespace autoverhuur
         public main_menu()
         {
             InitializeComponent();
+            database db = new database();
+            dataGridView1.DataSource = db.createTable("SELECT * FROM factuur");
         }
 
         
 
         private void Autooverzichtbtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             autoverhuurForm form = new autoverhuurForm();
             form.ShowDialog();
            
@@ -34,31 +35,13 @@ namespace autoverhuur
 
         private void KlantenoverzicchtBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             klanteen_overzicht form = new klanteen_overzicht();
             form.ShowDialog();
            
         }
 
-        private void KlantToevoegenBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            klant_toevoegen form = new klant_toevoegen();
-            form.ShowDialog();
-           
-        }
-
-        private void AutotoevoegBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            auto_toevoegen form = new auto_toevoegen();
-            form.ShowDialog();
-       
-        }
-
         private void ReserverenBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             reserveren form = new reserveren ();
             form.ShowDialog();
             

@@ -17,13 +17,9 @@ namespace autoverhuur
             InitializeComponent();
         }
 
-       
-
-        private void MainmenuBtn_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
-           
-            //response.Redirect("main_menu.aspx");
+            this.Close();
         }
     }
 }

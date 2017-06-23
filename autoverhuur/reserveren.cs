@@ -15,6 +15,8 @@ namespace autoverhuur
         public reserveren()
         {
             InitializeComponent();
+            database db = new database();
+            dataGridView1.DataSource = db.createTable("SELECT * FROM reservering");
         }
     }
 }
